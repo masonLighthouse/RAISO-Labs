@@ -1,0 +1,5 @@
+newspaper3k
+nltk
+bs4
+requests
+textblob
