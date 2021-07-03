@@ -7,7 +7,7 @@ import time
 if __name__ == "__main__":
     print("Getting articles...")
     time.sleep(2)
-    print("Retreiving summaries...") 
+    print("Retreiving summaries...")
     time.sleep(2)
     content_string = get_content_string(
         "https://www.nytimes.com/section/technology")
