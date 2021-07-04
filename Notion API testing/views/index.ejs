@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- ADDING IN THE SCRIPT FROM PUBLIC DIRECTORY -->
+    <script src="script.js" defer></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container my-4">
+      <h1>RAISO Test DB</h1>
+      <form class="border-bottom" action="/create-entry" method="POST">
+        <!-- TITLE INPUT -->
+        <div class="row">
+          <div class="col-12 col-md mb-3">
+            <label for="title">Title</label>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              required
+              class="form-control"
+            />
+          </div>
+        </div>
+        <!-- TAGS/ORGANIZATION INPUT -->
+        <div class="row">
+          <div class="col-12 col-md mb-3">
+            <label for="tagIds">Tags</label>
+            <select name="tagIds" id="tagIds" class="form-select" multiple>
+              <!-- Loop through all of the tags -->
+              <% tags.forEach(tag => { %>
+              <option value="<%=tag.id%>"><%= tag.name %></option>
+              <% }) %>
+            </select>
+          </div>
+        </div>
+        <!-- DESCRIPTION -->
+        <div class="mb-3">
+          <label for="description">Description</label>
+          <textarea
+            name="description"
+            id="description"
+            class="form-control"
+            maxlength="500"
+            required
+          ></textarea>
+        </div>
+        <!-- CONTACTED (boolean check) -->
+        <div class="form-check mb-3">
+          <label class="form-check-label" for="contacted">Contacted</label>
+          <input
+            type="checkbox"
+            name="contacted"
+            id="contacted"
+            class="form-check-input"
+          />
+        </div>
+        <!-- VALUE (number) -->
+        <div class="mb-3">
+          <label for="value">Value</label>
+          <input type="number" name="value" id="value" class="form-control" />
+        </div>
+        <!-- SUBMIT BUTTON -->
+        <button type="submit" class="btn btn-primary mb-3">Submit</button>
+      </form>
+      <!-- RENDERING ALL OF THE CURRENT THINGS IN THE DB -->
+      <!-- RENDERING ALL OF THE CURRENT THINGS IN THE DB -->
+      <!-- RENDERING ALL OF THE CURRENT THINGS IN THE DB -->
+      <!-- RENDERING ALL OF THE CURRENT THINGS IN THE DB -->
+      <div class="row g-3 mt-3">
+        <% pages.forEach(page => { %>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card" data-page-id="<%= page.id %>">
+            <div
+              class="
+                card-header
+                d-flex
+                justify-content-between
+                align-items-center
+              "
+            >
+              <div><%= page.title %></div>
+              <div
+                class="d-flex justify-content-center align-items-cener"
+              ></div>
+              <div>
+                <span class="me-2" data-raise-value-count>
+                  <%= page.value %>
+                </span>
+                <button data-raise-value-btn class="px-1 py-0 btn btn-primary">
+                  +
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <p><%= page.description %></p>
+              <% page.organization.forEach(tag => { %>
+              <div class="badge bg-secondary rounded-pill"><%= tag.name %></div>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </body>
+</html>

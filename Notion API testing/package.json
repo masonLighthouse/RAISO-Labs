@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "@notionhq/client": "^0.2.1",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1"
+  },
+  "name": "notion-api-testing",
+  "version": "1.0.0",
+  "description": "Notion API testing for RAISO",
+  "main": "index.js",
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "devStart": "nodemon server.js"
+  },
+  "author": "Mason Secky-Koebel",
+  "license": "ISC"
+}
