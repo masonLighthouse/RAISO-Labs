@@ -51,14 +51,16 @@ app.post("/create-entry", async (req, res) => {
       return { id: tagId };
     }),
   });
-
   res.redirect("/");
 });
-
+/**
+ * POST AN UPDATE TO THE VALUE PROPERTY
+ */
 app.post("/increase-value", async (req, res) => {
-  console.log("PLEASE: ", req.body.pageId);
   const value = await upVoteSuggestion(req.body.pageId);
   res.json(value);
 });
-
+/**
+ * PORT IN .env
+ */
 app.listen(process.env.PORT);
